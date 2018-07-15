@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  eureka-server:
+    build: ./eureka-server
+    ports:
+      - "8761:8761"
+
+  zuul-server:
+    build: ./zuul-server
+    ports:
+      - "8762:8762"
+    depends_on:
+      - eureka-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka
+
+  rest1-server:
+    build: ./rest1-server
+    ports:
+      - "9001:9001"
+    depends_on:
+      - eureka-server
+      - zuul-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka
+
+
+  rest2-server:
+    build: ./rest2-server
+    ports:
+      - "9002:9002"
+    depends_on:
+      - eureka-server
+      - zuul-server
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka

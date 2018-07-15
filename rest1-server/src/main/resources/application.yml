@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:9001}
+  port: 9001
 
 spring:
   application:
@@ -8,7 +8,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://localhost:8761/eureka
   instance:
     leaseRenewalIntervalInSeconds: 10
     metadataMap:
