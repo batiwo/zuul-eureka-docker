@@ -9,7 +9,7 @@ services:
   zuul-server:
     build: ./zuul-server
     ports:
-      - "8762:8762"
+      - "80:8762"
     depends_on:
       - eureka-server
     environment:
