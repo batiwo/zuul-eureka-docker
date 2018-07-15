@@ -1,0 +1,23 @@
+server:
+  port: ${PORT:8762}
+
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}:${random.value}}
+
+zuul:
+  routes:
+    rest1:
+      path: /rest1/**
+      serviceId: rest1-server
+    rest2:
+      path: /rest2/**
+      serviceId: rest2-server

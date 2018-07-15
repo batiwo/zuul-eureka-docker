@@ -1,0 +1,15 @@
+server:
+  port: ${PORT:9002}
+
+spring:
+  application:
+    name: rest2-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}:${random.value}}
