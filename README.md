@@ -1,4 +1,4 @@
-# Suul Eureka Docker
+# Zuul Eureka Docker
 
 The purpose of this project is to present a full example of docker deployement with 2 Rest Api and Zuul as proxy and Eureka as "DNS".
 
